@@ -47,20 +47,14 @@ Linux authentication logs (`/var/log/auth.log`) were forwarded in parallel via a
 ![Linux authentication logs flowing into Splunk in real time](05-linux-auth-logs-in-splunk.png)
 *25,954 Linux auth.log events ingested and searchable.*
 
-![Windows Security Event Logs received in Splunk](06-windows-security-logs-splunk.png)
-
 ![Multiple log sources active — Sysmon, Windows Security/Application/System](07-multiple-log-sources-sysmon.png)
 *Confirms Sysmon Operational, Windows Security, Application, and System logs are all being indexed alongside other infrastructure logs in the shared lab environment.*
 
 ### Linux Universal Forwarder — Install Notes
 
-![Downloading the Universal Forwarder package on Linux](02-linux-forwarder-download.png)
-
 The first installation attempt failed a CPU-compatibility precheck (`CPU Info upgrade precheck FAILED`) — resolved by setting `SPLUNK_SKIP_PREINSTALL_CPU_CHECKS_CORRUPTING_DATA_IF_UNSUPPORTED=1` for the lab VM, after which installation completed successfully:
 
 ![CPU compatibility issue resolved, installation successful](03-cpu-check-fix-success.png)
-
-![Configuring the forward-server destination](04-forward-server-config.png)
 
 ---
 
@@ -143,14 +137,7 @@ EventCode=1
 
 ## Dashboard
 
-![Dashboard detection tables — brute force, whoami, and Nmap detections](09-dashboard-detection-tables.png)
-
-![Brute force attack timeline, zoomed](10-brute-force-timeline.png)
-*Timeline panel shows the sharp spike in failed logins characteristic of automated Hydra activity, followed by the single successful authentication.*
-
-![Nmap detection table detail](11-nmap-detection-table.png)
-
-Dashboard combines 4 KPIs (Failed Logins, Successful Logins, Whoami Executions, Network Scan Detections), 1 timeline visualization, and 3 detection tables into a single SOC-analyst view.
+See the Final Security Monitoring Dashboard at the top of this README — it combines 4 KPIs (Failed Logins, Successful Logins, Whoami Executions, Network Scan Detections), 1 timeline visualization, and 3 detection tables (Brute Force, Whoami Execution, Nmap Scan) into a single SOC-analyst view.
 
 ## Attack Chain Summary
 
