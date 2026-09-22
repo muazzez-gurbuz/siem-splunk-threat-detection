@@ -4,7 +4,7 @@
 
 `SIEM` `Splunk Enterprise` `Splunk Universal Forwarder` `Sysmon` `SPL` `Log Correlation` `MITRE ATT&CK` `Threat Detection` `Dashboard Design` `Hydra` `Nmap`
 
-![Final Security Monitoring Dashboard](siem-splunk-screenshots/01-final-security-dashboard.png)
+![Final Security Monitoring Dashboard](01-final-security-dashboard.png)
 *Centralized dashboard combining all three detections — KPIs, attack timeline, and detailed event tables.*
 
 ---
@@ -44,23 +44,23 @@ Linux authentication logs (`/var/log/auth.log`) were forwarded in parallel via a
 
 ## Log Sources Configured
 
-![Linux authentication logs flowing into Splunk in real time](siem-splunk-screenshots/05-linux-auth-logs-in-splunk.png)
+![Linux authentication logs flowing into Splunk in real time](05-linux-auth-logs-in-splunk.png)
 *25,954 Linux auth.log events ingested and searchable.*
 
-![Windows Security Event Logs received in Splunk](siem-splunk-screenshots/06-windows-security-logs-splunk.png)
+![Windows Security Event Logs received in Splunk](06-windows-security-logs-splunk.png)
 
-![Multiple log sources active — Sysmon, Windows Security/Application/System](siem-splunk-screenshots/07-multiple-log-sources-sysmon.png)
+![Multiple log sources active — Sysmon, Windows Security/Application/System](07-multiple-log-sources-sysmon.png)
 *Confirms Sysmon Operational, Windows Security, Application, and System logs are all being indexed alongside other infrastructure logs in the shared lab environment.*
 
 ### Linux Universal Forwarder — Install Notes
 
-![Downloading the Universal Forwarder package on Linux](siem-splunk-screenshots/02-linux-forwarder-download.png)
+![Downloading the Universal Forwarder package on Linux](02-linux-forwarder-download.png)
 
 The first installation attempt failed a CPU-compatibility precheck (`CPU Info upgrade precheck FAILED`) — resolved by setting `SPLUNK_SKIP_PREINSTALL_CPU_CHECKS_CORRUPTING_DATA_IF_UNSUPPORTED=1` for the lab VM, after which installation completed successfully:
 
-![CPU compatibility issue resolved, installation successful](siem-splunk-screenshots/03-cpu-check-fix-success.png)
+![CPU compatibility issue resolved, installation successful](03-cpu-check-fix-success.png)
 
-![Configuring the forward-server destination](siem-splunk-screenshots/04-forward-server-config.png)
+![Configuring the forward-server destination](04-forward-server-config.png)
 
 ---
 
@@ -120,7 +120,7 @@ Image="*whoami.exe"
 
 **Scenario:** Nmap/Zenmap executed from the compromised Windows endpoint to simulate network reconnaissance.
 
-![Nmap/Zenmap scan launched from the Windows endpoint](siem-splunk-screenshots/08-zenmap-nmap-scan-execution.png)
+![Nmap/Zenmap scan launched from the Windows endpoint](08-zenmap-nmap-scan-execution.png)
 
 ```spl
 source="WinEventLog:Microsoft-Windows-Sysmon/Operational"
@@ -143,12 +143,12 @@ EventCode=1
 
 ## Dashboard
 
-![Dashboard detection tables — brute force, whoami, and Nmap detections](siem-splunk-screenshots/09-dashboard-detection-tables.png)
+![Dashboard detection tables — brute force, whoami, and Nmap detections](09-dashboard-detection-tables.png)
 
-![Brute force attack timeline, zoomed](siem-splunk-screenshots/10-brute-force-timeline.png)
+![Brute force attack timeline, zoomed](10-brute-force-timeline.png)
 *Timeline panel shows the sharp spike in failed logins characteristic of automated Hydra activity, followed by the single successful authentication.*
 
-![Nmap detection table detail](siem-splunk-screenshots/11-nmap-detection-table.png)
+![Nmap detection table detail](11-nmap-detection-table.png)
 
 Dashboard combines 4 KPIs (Failed Logins, Successful Logins, Whoami Executions, Network Scan Detections), 1 timeline visualization, and 3 detection tables into a single SOC-analyst view.
 
@@ -172,3 +172,4 @@ Correlating all three detections reconstructs a realistic end-to-end intrusion: 
 ---
 
 *Team project completed as part of OAK Academy's Cybersecurity Engineering program in a controlled training lab environment. The cracked credential value from the brute-force simulation has intentionally been left out of this summary.*
+
